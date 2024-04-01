@@ -7,13 +7,11 @@ form.addEventListener('input', onTextareaInput);
 function handleSubmit(event) {
   event.preventDefault();
   if (
-    form.elements.email.value.trim() !== `` &&
-    ` ` &&
-    form.elements.message.value.trim() !== `` &&
-    ` `
+    form.elements.email.value.trim() !== '' &&
+    form.elements.message.value.trim() !== ''
   ) {
     const send = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    console.log('send');
+    console.log(send);
     event.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
   }
@@ -21,8 +19,8 @@ function handleSubmit(event) {
 
 function onTextareaInput(event) {
   const formData = {
-    email: form.email.value.trim(),
-    message: form.message.value.trim(),
+    email: form.elements.email.value.trim(),
+    message: form.elements.message.value.trim(),
   };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
